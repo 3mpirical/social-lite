@@ -5,6 +5,7 @@ import axios from "axios";
 const AuthContext = React.createContext();
 
 
+
 class AuthProvider extends React.Component {
     state = {
         user: null
@@ -15,16 +16,16 @@ class AuthProvider extends React.Component {
         handleRegister: (user) => this.handleRegister(user),
         handleLogin: (user) => this.handleLogin(user),
         handleLogout: (user) => this.handleLogout(user),
-        authenticated: () => this.authenticated()
+        authenticated: () => this.authenticated(),
+        setUser: (user) => this.setUser(user)
     }
 
     handleRegister = (user) => {
         return new Promise((resolve, reject) => {
             axios.post(`/api/auth`, user)
             .then((res) => {
-                resolve("success")
-                console.log(res.data);
                 this.setState({ user: res.data.data });
+                resolve(res.data.status)
             })
             .catch((err) => reject(err));
         });
@@ -34,21 +35,19 @@ class AuthProvider extends React.Component {
         return new Promise((resolve, reject) => {
             axios.post(`/api/auth/sign_in`, user)
             .then((res) => {
-                resolve("success")
-                console.log(res.data);
                 this.setState({ user: res.data.data });
+                resolve(res.data.status)
             })
             .catch((err) => reject(err));
         });
     }
 
-    handleLogout = (user) => {
+    handleLogout = () => {
         return new Promise((resolve, reject) => {
             axios.delete(`/api/auth/sign_out`)
             .then((res) => {
-                resolve("success")
-                console.log(res.data);
                 this.setState({ user: null });
+                resolve(res.data.status)
             })
             .catch((err) => reject(err));
         });
@@ -56,7 +55,9 @@ class AuthProvider extends React.Component {
     
     authenticated = () => this.state.user !== null;
 
-
+    setUser = (user) => {
+        this.setState({ user })
+    }
 
 
 
@@ -68,6 +69,7 @@ class AuthProvider extends React.Component {
         )
     }
 }
+
 
 
 const withAuth = (Component) => {
