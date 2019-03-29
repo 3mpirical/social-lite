@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 import FetchUser from "./components/FetchUser";
 import Default from "./components/Default";
 import Navbar from "./components/Navbar";
@@ -14,7 +15,7 @@ class App extends Component {
         <Navbar />
         <FetchUser>
           <Switch>
-            <Route exact path="/" component={UserShow} />
+            <ProtectedRoute exact path="/" component={UserShow} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route component={Default} />
