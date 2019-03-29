@@ -47,14 +47,14 @@ class Navbar extends React.Component {
         if(this.props.authenticated()) {
             return (
                 <>
-                    <Link to={`/user/${this.props.user.id}`} className="btn-white navbar__user">
+                    <a href={`/user/${this.props.user.id}`} className="btn-white navbar__user">
                         <img 
                             className="navbar__user__picture"
                             src={this.props.user.image}
                             alt="user icon"
                         ></img>
                         { this.props.user.name }
-                    </Link>
+                    </a>
 
                     <a className="messages-btn btn-white" > 
                         <div>Messages</div>

@@ -23,7 +23,7 @@ user_two = User.create(
 
 User.add_friend(user_one, user_two);
 
-for i in (1..20)
+for i in (1..40)
     User.create(
         name: Faker::Name.name(),
         image: Faker::Avatar.image(),

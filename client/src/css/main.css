@@ -103,14 +103,14 @@ body {
   width: 28rem;
   background-color: rgba(255, 255, 255, 0.3);
   border-left: 1px solid white;
-  padding-top: 0.5rem; }
+  padding-top: 0.5rem;
+  overflow-y: scroll; }
   .search-dropdown__container .result {
     text-decoration: none;
     margin-bottom: 0.75rem;
     color: white;
     border-bottom: 1px solid white;
-    font-size: 1.7rem;
-    overflow-y: scroll; }
+    font-size: 1.7rem; }
     .search-dropdown__container .result:hover {
       color: #039BE5;
       border-color: #039BE5; }
