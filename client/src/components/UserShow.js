@@ -23,15 +23,25 @@ class UserShow extends React.Component {
 
     render() {
         const { user } = this.state;
-        return(
-            <>
-                <div className="wallpaper" style={ user && {backgroundImage: `url(../images/${user.messaging_background}.jpg)`}} ></div>
-                <div className="user-show-container">
-                    User Show Page
-                </div>
-            </>
-
-        )
+        if(!user) {
+            return null
+        } else {
+            return(
+                <>
+                    <div className="wallpaper" style={ user && {backgroundImage: `url(../images/${user.messaging_background}.jpg)`}} ></div>
+                    <div className="user-show-container">
+                        <img 
+                            src={user.image} 
+                            alt="user picture" 
+                            className="user-show__user-picture" 
+                        />
+                        <br />
+                        <h2 className="user-show__user-name" >{user.name}</h2>
+                    </div>
+                </>
+    
+            )
+        }
     }
 }
 
