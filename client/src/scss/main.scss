@@ -1,5 +1,15 @@
 
+
 $color-white: white;
+$color-background: #212121;
+$color-grey-dark: #424242;
+$color-grey: #757575;
+$color-grey-light: #BDBDBD;
+$color-green: #00ACC1;
+$color-blue: #039BE5;
+$color-indigo: #3F51B5;
+$color-violet: #AB47BC;
+
 $border-radius: 3px;
 
 
@@ -15,7 +25,7 @@ html {
 
 body {
     box-sizing: border-box;
-    background-color: slategrey;
+    background-color: $color-background;
     color: white;
     font-size: 1.6rem;
     font-family: "Lato", sans-serif;
@@ -23,12 +33,13 @@ body {
 }
 
 .btn-white {
+    display: inline-block;
     text-decoration: none;
     color: white;
     background-color: transparent;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 1rem;
     border: 1px solid $color-white;
-    border-radius: $border-radius;
+    border-radius: 100px;
     cursor: pointer;
     transition-duration: 0.1s;
 
@@ -42,15 +53,90 @@ body {
 }
 
 .navbar {
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
-    height: 10rem;
-    background-color: rgba(black, 0.5);
-
+    height: 5rem;
+    width: 100vw;
+    background-color: rgba($color-white, 0.3);
+    border-bottom: 1px solid $color-white;
+    font-size: 1.6rem;
+    
+    
     a {
         margin-left: 1rem;
+    }
+
+    &__left {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &__right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+    &__clearfix {
+        height: 8rem;
+        width: 100vw;
+        margin-bottom: 2rem;
+    }
+
+    &__waypoint {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        // padding: 0.25rem;
+
+        &__picture {
+            height: 1.75rem;
+            width: 1.75rem;
+            border-radius: 100px;
+            background-color: rgba($color-white, 0.1);
+            margin-right: 0.5rem;
+        }
+    }
+
+    .messages-btn {
+        display: flex;
+        align-items: center;
+
+        .messages-status {
+            height: 1.25rem;
+            width: 1.25rem;
+            margin: 0.2rem 0 0 0.5rem ;
+            border: 1px solid white;
+            border-radius: 100px;
+            background-color: $color-blue;
+        }
+    }
+}
+
+.searchbar {
+    font-size: 1.6rem;
+    font-family: "Lato";
+    letter-spacing: 1px;
+    outline: none;
+    width: 17.5rem;
+    cursor: text;
+
+    &:focus {
+        background-color: rgba($color-white, 0.3);
+        box-shadow: 0 0 0 4px $color-indigo;
+    }
+
+    &::placeholder {
+        color: rgba($color-white, 0.5rem);
     }
 }
 
@@ -60,4 +146,15 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+
+.wallpaper {
+    background-size: cover;
+    background-position: bottom;
+    position: fixed;
+    bottom: 0;
+    z-index: -10000;
+    height: 100vh;
+    width: 100vw;
 }

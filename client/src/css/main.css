@@ -8,19 +8,20 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: slategrey;
+  background-color: #212121;
   color: white;
   font-size: 1.6rem;
   font-family: "Lato", sans-serif;
   letter-spacing: 1px; }
 
 .btn-white {
+  display: inline-block;
   text-decoration: none;
   color: white;
   background-color: transparent;
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 1rem;
   border: 1px solid white;
-  border-radius: 3px;
+  border-radius: 100px;
   cursor: pointer;
   transition-duration: 0.1s; }
   .btn-white:hover {
@@ -29,17 +30,78 @@ body {
     background-color: white; }
 
 .navbar {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  height: 10rem;
-  background-color: rgba(0, 0, 0, 0.5); }
+  height: 5rem;
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid white;
+  font-size: 1.6rem; }
   .navbar a {
     margin-left: 1rem; }
+  .navbar__left {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+  .navbar__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+  .navbar__clearfix {
+    height: 8rem;
+    width: 100vw;
+    margin-bottom: 2rem; }
+  .navbar__waypoint {
+    position: absolute;
+    top: 0;
+    right: 0; }
+  .navbar__user {
+    display: flex;
+    align-items: center; }
+    .navbar__user__picture {
+      height: 1.75rem;
+      width: 1.75rem;
+      border-radius: 100px;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin-right: 0.5rem; }
+  .navbar .messages-btn {
+    display: flex;
+    align-items: center; }
+    .navbar .messages-btn .messages-status {
+      height: 1.25rem;
+      width: 1.25rem;
+      margin: 0.2rem 0 0 0.5rem;
+      border: 1px solid white;
+      border-radius: 100px;
+      background-color: #039BE5; }
+
+.searchbar {
+  font-size: 1.6rem;
+  font-family: "Lato";
+  letter-spacing: 1px;
+  outline: none;
+  width: 17.5rem;
+  cursor: text; }
+  .searchbar:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 0 4px #3F51B5; }
+  .searchbar::placeholder {
+    color: rgba(255, 255, 255, 0.5); }
 
 .register {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center; }
+
+.wallpaper {
+  background-size: cover;
+  background-position: bottom;
+  position: fixed;
+  bottom: 0;
+  z-index: -10000;
+  height: 100vh;
+  width: 100vw; }

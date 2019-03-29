@@ -11,6 +11,7 @@
     "react-dom": "^16.8.5",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-waypoint": "^9.0.1",
     "waypoints": "^4.0.1"
   },
   "proxy": "http://localhost:3001",

@@ -1,11 +1,37 @@
 import React from "react";
 import { withAuth } from "../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { Waypoint } from "react-waypoint";
+import anime from "animejs";
 
 
 
 class Navbar extends React.Component {
-    
+
+    navbarRef = React.createRef();
+
+    handleLeave = () => {
+        // console.log("waypoint has left");
+        // anime({
+        //     targets: this.navbarRef.current,
+        //     height: "5rem",
+        //     backgroundColor: "rgba(0,0,0, 0.7)",
+        //     easing: "linear",
+        //     duration: 200,
+        // });
+    }
+
+    handleEnter = () => {
+        // console.log("waypoint has entered");
+        // anime({
+        //     targets: this.navbarRef.current,
+        //     height: "8rem",
+        //     backgroundColor: "rgba(0,0,100, 0.7)",
+        //     easing: "linear",
+        //     duration: 200,
+        // });
+    }
+
 
     handleLogoutClick = (event) => {
         this.props.handleLogout()
@@ -16,11 +42,42 @@ class Navbar extends React.Component {
         .catch((err) => console.log(err));
     }
 
-    renderLinks = () => {
+    renderLeft = () => {
         if(this.props.authenticated()) {
             return (
                 <>
-                    <Link to="/" className="btn-white">Home</Link>
+                    <Link to="/" className="btn-white navbar__user">
+                        <img 
+                            className="navbar__user__picture"
+                            src={this.props.user.image}
+                            alt="user icon"
+                        ></img>
+                        { this.props.user.name }
+                    </Link>
+
+                    <a className="messages-btn btn-white" > 
+                        <div>Messages</div>
+                        <div className="messages-status"></div> 
+                    </a>
+                </>
+            ) 
+        } else {
+            return (
+                <h3 className="navbar__title">Social-Lite</h3>
+            )
+        }
+    }
+
+    renderRight = () => {
+        if(this.props.authenticated()) {
+            return (
+                <>  
+                    <form className="searchbar__container">
+                        <input 
+                            className="searchbar btn-white"
+                            placeholder="... user name"
+                        ></input>
+                    </form>
                     <a 
                         onClick={this.handleLogoutClick} 
                         className="btn-white"
@@ -39,15 +96,24 @@ class Navbar extends React.Component {
 
     render() {
         return(
-            <nav className="navbar">
-                <div className="navbar__left">
-                    <h3 className="navbar__title">Social-Lite</h3>
-                </div>
+            <>
+                <nav className="navbar" ref={this.navbarRef} >
+                    <div className="navbar__left">
+                        { this.renderLeft() }
+                    </div>
 
-                <div className="navbar__right">
-                    { this.renderLinks() }
-                </div>
-            </nav>
+                    { this.props.user && <h3 className="navbar__title">Social-Lite</h3> }
+
+                    <div className="navbar__right">
+                        { this.renderRight() }
+                    </div>
+                </nav>
+                <div className="navbar__clearfix"></div>
+                <Waypoint 
+                    onLeave={() => this.handleLeave()}
+                    onEnter={() => this.handleEnter()}
+                ><div className="navbar__waypoint"  ></div></Waypoint>
+            </>
         )
     }
 }

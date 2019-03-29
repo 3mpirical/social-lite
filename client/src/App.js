@@ -5,6 +5,7 @@ import Default from "./components/Default";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import UserShow from "./components/UserShow";
 
 class App extends Component {
   render() {
@@ -13,7 +14,7 @@ class App extends Component {
         <Navbar />
         <FetchUser>
           <Switch>
-            <Route exact path="/" render={() => <h1>Home Page</h1>} />
+            <Route exact path="/" component={UserShow} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route component={Default} />

@@ -11,15 +11,6 @@ class AuthProvider extends React.Component {
         user: null
     }
 
-    value = {
-        ...this.state,
-        handleRegister: (user) => this.handleRegister(user),
-        handleLogin: (user) => this.handleLogin(user),
-        handleLogout: (user) => this.handleLogout(user),
-        authenticated: () => this.authenticated(),
-        setUser: (user) => this.setUser(user)
-    }
-
     handleRegister = (user) => {
         return new Promise((resolve, reject) => {
             axios.post(`/api/auth`, user)
@@ -35,6 +26,7 @@ class AuthProvider extends React.Component {
         return new Promise((resolve, reject) => {
             axios.post(`/api/auth/sign_in`, user)
             .then((res) => {
+                console.log(res.data.data)
                 this.setState({ user: res.data.data });
                 resolve(res.data.status)
             })
@@ -63,7 +55,13 @@ class AuthProvider extends React.Component {
 
     render() {
         return (
-            <AuthContext.Provider value={{...this.value}} >
+            <AuthContext.Provider value={{        
+                ...this.state,
+                handleRegister: (user) => this.handleRegister(user),
+                handleLogin: (user) => this.handleLogin(user),
+                handleLogout: (user) => this.handleLogout(user),
+                authenticated: () => this.authenticated(),
+                setUser: (user) => this.setUser(user)}} >
                 { this.props.children }
             </AuthContext.Provider>
         )
