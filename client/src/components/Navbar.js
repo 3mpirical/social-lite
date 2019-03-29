@@ -1,8 +1,9 @@
 import React from "react";
+// import anime from "animejs";
 import { withAuth } from "../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { Waypoint } from "react-waypoint";
-import anime from "animejs";
+import Searchbar from "./Searchbar";
 
 
 
@@ -46,7 +47,7 @@ class Navbar extends React.Component {
         if(this.props.authenticated()) {
             return (
                 <>
-                    <Link to="/" className="btn-white navbar__user">
+                    <Link to={`/user/${this.props.user.id}`} className="btn-white navbar__user">
                         <img 
                             className="navbar__user__picture"
                             src={this.props.user.image}
@@ -72,12 +73,7 @@ class Navbar extends React.Component {
         if(this.props.authenticated()) {
             return (
                 <>  
-                    <form className="searchbar__container">
-                        <input 
-                            className="searchbar btn-white"
-                            placeholder="... user name"
-                        ></input>
-                    </form>
+                    <Searchbar />
                     <a 
                         onClick={this.handleLogoutClick} 
                         className="btn-white"

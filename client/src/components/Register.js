@@ -5,23 +5,29 @@ import { withAuth } from "../providers/AuthProvider";
 
 class Register extends React.Component {
     state = {  
+        name: "",
         email: "",
+        image: "https://robohash.org/your-name-here",
+        messagingBackground: "street",
         password: "",
         passwordConfirmation: "",
     }
 
     handleSubmit = (event) => {
-        const { email, password, passwordConfirmation } = this.state;
+        const { name, email, password, image, messagingBackground, passwordConfirmation } = this.state;
 
         event.preventDefault();
         this.props.handleRegister({ 
+            name,
             email,
             password,
+            image,
+            messaging_background: messagingBackground,
             password_confirmation: passwordConfirmation,
         })
         .then((res) => {
             console.log("user registered successfully");
-            this.props.history.push("/");
+            this.props.history.push(`/user/${this.props.user.id}`);
         })
         .catch((err) => console.log(err));
     }
@@ -37,12 +43,56 @@ class Register extends React.Component {
                     <h1>Make Your Account</h1>
                     <input
                         required 
+                        type="name"
+                        placeholder="Name"
+                        name="name"
+                        value={this.state.name}
+                        onChange={this.handleChange}
+                    />  
+                    <input
+                        required 
                         type="email"
                         placeholder="Email"
                         name="email"
                         value={this.state.email}
                         onChange={this.handleChange}
                     />  
+                    <input
+                        required 
+                        type="text"
+                        placeholder="image url"
+                        name="image"
+                        value={this.state.image}
+                        onChange={this.handleChange}
+                    /> 
+                    <select 
+                        name="messagingBackground" 
+                        value={this.state.messagingBackground}
+                        onChange={this.handleChange}
+                    >
+                    {/* ["metro", "flower", "glacier", "street", "overpass", "mountains", "control"] */}
+                    <option className="option-metro"
+                        value="street"
+                    >Street</option>
+                    <option 
+                        value="flower"
+                    >Flower</option>
+                    <option 
+                        value="control"
+                    >Control Room</option>
+                    <option 
+                        value="mountains"
+                    >Mountains</option>
+                    <option 
+                        value="glacier"
+                    >Glacier</option>
+                    <option 
+                        value="overpass"
+                    >Overpass</option>
+                    <option 
+                        value="metro"
+                    >Metro</option>
+                    </select>
                     <input
                         required 
                         type="password"

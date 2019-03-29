@@ -15,7 +15,7 @@ class App extends Component {
         <Navbar />
         <FetchUser>
           <Switch>
-            <ProtectedRoute exact path="/" component={UserShow} />
+            <ProtectedRoute exact path="/user/:id" component={UserShow} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route component={Default} />

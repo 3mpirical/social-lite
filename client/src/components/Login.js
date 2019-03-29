@@ -22,7 +22,7 @@ class Login extends React.Component {
             })
             .then((res) => {
                 console.log("user loggded in successfully");
-                this.props.history.push("/");
+                this.props.history.push(`/user/${this.props.user.id}`);
             })
             .catch((err) => console.log(err));
         } else {

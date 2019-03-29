@@ -91,6 +91,30 @@ body {
   .searchbar::placeholder {
     color: rgba(255, 255, 255, 0.5); }
 
+.search-dropdown__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: fixed;
+  top: 5rem;
+  right: 0rem;
+  height: calc(100vh - 5rem);
+  width: 28rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-left: 1px solid white;
+  padding-top: 0.5rem; }
+  .search-dropdown__container .result {
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    color: white;
+    border-bottom: 1px solid white;
+    font-size: 1.7rem;
+    overflow-y: scroll; }
+    .search-dropdown__container .result:hover {
+      color: #039BE5;
+      border-color: #039BE5; }
+
 .register {
   display: flex;
   flex-direction: column;

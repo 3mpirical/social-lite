@@ -23,6 +23,15 @@ user_two = User.create(
 
 User.add_friend(user_one, user_two);
 
+for i in (1..20)
+    User.create(
+        name: Faker::Name.name(),
+        image: Faker::Avatar.image(),
+        messaging_background: backgrounds[rand(0..6)],
+        email: Faker::Internet.email(),
+        password: "password"
+    )
+end
 
 for i in (1..10)
     Message.create(

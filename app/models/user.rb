@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   def self.search_users(input)
     User.find_by_sql(["
       SELECT * FROM users
-      WHERE email LIKE ?
+      WHERE name ILIKE ?
     ", "#{input}%" ])
   end
 
