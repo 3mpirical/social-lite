@@ -26,7 +26,7 @@ html {
 body {
     box-sizing: border-box;
     background-color: $color-background;
-    color: white;
+    color: $color-white;
     font-size: 1.6rem;
     font-family: "Lato", sans-serif;
     letter-spacing: 1px;
@@ -35,7 +35,7 @@ body {
 .btn-white {
     display: inline-block;
     text-decoration: none;
-    color: white;
+    color: $color-white;
     background-color: transparent;
     padding: 0.25rem 1rem;
     border: 1px solid $color-white;
@@ -114,7 +114,7 @@ body {
             height: 1.25rem;
             width: 1.25rem;
             margin: 0.2rem 0 0 0.5rem ;
-            border: 1px solid white;
+            border: 1px solid $color-white;
             border-radius: 100px;
             background-color: $color-blue;
         }
@@ -150,15 +150,15 @@ body {
     height: calc(100vh - 5rem);
     width: 28rem;
     background-color: rgba($color-white, 0.3);
-    border-left: 1px solid white;
+    border-left: 1px solid $color-white;
     padding-top: 0.5rem;
     overflow-y: scroll;
 
     .result {
         text-decoration: none;
         margin-bottom: 0.75rem;
-        color: white;
-        border-bottom: 1px solid white;
+        color: $color-white;
+        border-bottom: 1px solid $color-white;
         font-size: 1.7rem;
 
         &:hover {
@@ -188,16 +188,99 @@ body {
 }
 
 .user-show {
-    &__user-picture {
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 60rem;
         margin-left: 5rem;
+        padding: 2rem;
+    }
+
+    &__user-picture {
         height: 30rem;
         width: 30rem;
-        background-color: rgba($color-white, 0.1);
+        background-color: rgba($color-white, 0.3);
         border-radius: 1000px;
     }
 
     &__user-name {
-        display: inline-block;
-        margin: 2rem 0 0 10rem;
+        display: flex;
+        align-items: center;
+        margin: 2rem 0;
+
+        button {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.friends {
+    position: relative;
+    height: 40rem;
+    width: 60rem;
+    background-color: rgba($color-white, 0.3);
+    border: 1px solid $color-white;
+    border-radius: $border-radius;
+
+    &__meta {
+        position: relative;
+        height: 6rem;
+        
+        .friend-number {
+            position: absolute;
+            transform: translateY(-50%);
+            top: 50%;
+            right: 2rem;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid $color-white;
+            color: $color-white;
+            background-color: rgba($color-white, 0.2);
+            border-radius: 100px;
+        }
+    }
+
+    &__cards-container {
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        border: 1px solid $color-white;
+        border-radius: 3px;
+        height: calc(100% - 8rem);
+        width: calc(100% - 4rem);
+        overflow-y: scroll;
+    }
+
+    &__card {
+        text-decoration: none;
+        color: $color-white;
+        margin: 1rem 1.75rem;
+        border-radius: $border-radius;
+        transition-duration: 0.1s;
+
+        img {
+            height: 10rem;
+            width: 10rem;
+            border-radius: 1000px;
+        }
+
+        p {
+            font-size: 1.3rem;
+            width: 10rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        &:hover { background-color: rgba($color-white, 0.3); }
+
+        &:active { background-color: $color-white;}
     }
 }

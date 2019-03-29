@@ -21,7 +21,7 @@ user_two = User.create(
     password: "password"
 )
 
-User.add_friend(user_one, user_two);
+User.add_friend(user_one, user_two.id);
 
 for i in (1..40)
     User.create(

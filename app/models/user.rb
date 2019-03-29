@@ -15,12 +15,20 @@ class User < ActiveRecord::Base
 
   serialize :friends, Array
 
-  def self.add_friend(user, friend)
-    user.friends.push(friend.id)
+  def self.add_friend(user, friend_id)
+    if(user.friends.length > 0)
+      user.friends.each() {|current_friend_id|
+        return false if current_friend_id === friend_id
+      }
+    end
+
+    user.friends.push(friend_id)
     user.save()
     
-    friend.friends.push(user.id)
-    friend.save()
+    new_friend = User.find(friend_id);
+    new_friend.friends.push(user.id)
+    new_friend.save()
+    return true
   end
 
   def self.remove_friend(user, friend)

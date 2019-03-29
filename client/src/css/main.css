@@ -130,13 +130,79 @@ body {
   height: 100vh;
   width: 100vw; }
 
-.user-show__user-picture {
+.user-show__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60rem;
   margin-left: 5rem;
+  padding: 2rem; }
+
+.user-show__user-picture {
   height: 30rem;
   width: 30rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 1000px; }
 
 .user-show__user-name {
-  display: inline-block;
-  margin: 2rem 0 0 10rem; }
+  display: flex;
+  align-items: center;
+  margin: 2rem 0; }
+  .user-show__user-name button {
+    margin-right: 1rem; }
+
+.friends {
+  position: relative;
+  height: 40rem;
+  width: 60rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid white;
+  border-radius: 3px; }
+  .friends__meta {
+    position: relative;
+    height: 6rem; }
+    .friends__meta .friend-number {
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+      right: 2rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid white;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 100px; }
+  .friends__cards-container {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    border: 1px solid white;
+    border-radius: 3px;
+    height: calc(100% - 8rem);
+    width: calc(100% - 4rem);
+    overflow-y: scroll; }
+  .friends__card {
+    text-decoration: none;
+    color: white;
+    margin: 1rem 1.75rem;
+    border-radius: 3px;
+    transition-duration: 0.1s; }
+    .friends__card img {
+      height: 10rem;
+      width: 10rem;
+      border-radius: 1000px; }
+    .friends__card p {
+      font-size: 1.3rem;
+      width: 10rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .friends__card:hover {
+      background-color: rgba(255, 255, 255, 0.3); }
+    .friends__card:active {
+      background-color: white; }

@@ -11,6 +11,7 @@ class Api::SearchesController < ApplicationController
                 image: user.image,
                 messaging_background: user.messaging_background,
                 friends: user.friends,
+                id: user.id
         } )
     end
 end
