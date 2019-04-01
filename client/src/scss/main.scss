@@ -201,6 +201,9 @@ body {
         width: 60rem;
         padding-left: 2rem;
         font-size: 2rem;
+        letter-spacing: 2px;
+        font-size: "Lato", sans-serif;
+        font-weight: 300;
 
         &::placeholder {
             color: rgba($color-white, 0.5);

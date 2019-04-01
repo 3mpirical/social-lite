@@ -139,7 +139,10 @@ body {
     height: 4rem;
     width: 60rem;
     padding-left: 2rem;
-    font-size: 2rem; }
+    font-size: 2rem;
+    letter-spacing: 2px;
+    font-size: "Lato", sans-serif;
+    font-weight: 300; }
     .main-form__input::placeholder {
       color: rgba(255, 255, 255, 0.5); }
 
