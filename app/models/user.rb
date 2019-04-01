@@ -38,7 +38,6 @@ class User < ActiveRecord::Base
     user.save()
 
     old_friend = User.find(friend_id);
-    puts old_friend.friends
     old_friend.friends.reject!() {|user_id|
       user_id == user.id
     }

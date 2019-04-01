@@ -12,7 +12,6 @@ class UserShow extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log("component did update")
         if(prevState.user !== null && prevProps.match.params.id !== this.props.match.params.id) {
             this.updateUserAndFriends();
         }
@@ -44,7 +43,6 @@ class UserShow extends React.Component {
     addFriend = () => {
         axios.post(`/api/friends/${this.state.user.id}`)
         .then((res) => {
-            console.log(res.data);
             const friends = [...this.state.friends, this.props.user]
             this.setState({ friends })
         })
@@ -54,7 +52,6 @@ class UserShow extends React.Component {
     removeFriend = () => {
         axios.delete(`/api/friends/${this.state.user.id}`)
         .then((res) => {
-            console.log(res.data);
             const friends = this.state.friends.filter((friend) => {
                 if(friend.id === this.props.user.id) return false;
             })
