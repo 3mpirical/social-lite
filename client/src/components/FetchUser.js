@@ -15,7 +15,6 @@ class FetchUser extends React.Component {
             // if token is available for authentication, 
             // validdate it and set the returned user to state
             if(this.checkLocalToken()) {
-                console.log(this.checkLocalToken());
                 axios.get(`/api/auth/validate_token`)
                 .then((res) => {
                     this.props.setUser(res.data.data);

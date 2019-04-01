@@ -25,7 +25,7 @@ class UserShow extends React.Component {
                 return axios.get(`/api/friends/${this.state.user.id}`)
             })
             .then((res) => {
-                this.setState({ friends: res.data, currentUser: false }, console.log(this.state.friends));
+                this.setState({ friends: res.data, currentUser: false });
             })
             .catch((err) => console.log(err));
             
@@ -87,7 +87,7 @@ class UserShow extends React.Component {
                     onClick={() => this.removeFriend()}
                 >Remove Friend</button>
             )
-        } else {            
+        } else if(!currentUser) {            
             return (
                 <button 
                     className="btn-white" 
