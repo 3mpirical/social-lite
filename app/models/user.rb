@@ -31,16 +31,18 @@ class User < ActiveRecord::Base
     return true
   end
 
-  def self.remove_friend(user, friend)
+  def self.remove_friend(user, friend_id)
     user.friends.reject!() {|user_id|
-      user_id == friend.id
+      user_id == friend_id
     }
     user.save()
 
-    friend.friends.reject!() {|user_id|
+    old_friend = User.find(friend_id);
+    puts old_friend.friends
+    old_friend.friends.reject!() {|user_id|
       user_id == user.id
     }
-    friend.save()
+    old_friend.save()
   end
 
   def get_friends

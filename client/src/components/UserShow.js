@@ -51,6 +51,18 @@ class UserShow extends React.Component {
         .catch((err) => console.log(err));
     }
 
+    removeFriend = () => {
+        axios.delete(`/api/friends/${this.state.user.id}`)
+        .then((res) => {
+            console.log(res.data);
+            const friends = this.state.friends.filter((friend) => {
+                if(friend.id === this.props.user.id) return false;
+            })
+            this.setState({ friends })
+        })
+        .catch((err) => console.log(err));
+    }
+
     renderFriendsCards = () => {
         return this.state.friends.map((friend) => {
             return(
@@ -60,6 +72,32 @@ class UserShow extends React.Component {
                 </Link>
             )
         })
+    }
+
+    renderAddOrRemoveFriendBtn = () => {
+        const { currentUser, friends }  = this.state;
+        let isFriend = false;
+        if(friends) {
+            friends.forEach((friend) => {
+                if(friend.id === this.props.user.id) isFriend = true;
+            });
+        }
+
+        if(!currentUser && isFriend) {
+            return (
+                <button 
+                    className="btn-white" 
+                    onClick={() => this.removeFriend()}
+                >Remove Friend</button>
+            )
+        } else {            
+            return (
+                <button 
+                    className="btn-white" 
+                    onClick={() => this.addFriend()}
+                >Add Friend</button>
+            )
+        }
     }
 
     render() {
@@ -82,12 +120,7 @@ class UserShow extends React.Component {
 
                             <h2 
                                 className="user-show__user-name" >
-                                {!currentUser && (
-                                    <button 
-                                        className="btn-white" 
-                                        onClick={() => this.addFriend()}
-                                    >Add Friend</button>
-                                )} 
+                                {this.renderAddOrRemoveFriendBtn()}
                                 {user.name} 
                             </h2> 
 

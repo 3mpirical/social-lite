@@ -14,7 +14,8 @@ class Api::FriendsController < ApplicationController
     end
 
     def remove_friend
-        
+        User.remove_friend(current_user, params[:id])
+        render( json: "success")
     end
 
 end
