@@ -116,11 +116,32 @@ body {
       color: #039BE5;
       border-color: #039BE5; }
 
-.register {
+.register,
+.login {
+  text-align: center; }
+
+.main-form {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center; }
+  .main-form__heading {
+    margin-bottom: 4rem; }
+  .main-form__btn {
+    font-size: 2rem;
+    padding: 1rem 2rem; }
+  .main-form__input {
+    margin-bottom: 4rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid white;
+    border-radius: 100px;
+    color: white;
+    height: 4rem;
+    width: 60rem;
+    padding-left: 2rem;
+    font-size: 2rem; }
+    .main-form__input::placeholder {
+      color: rgba(255, 255, 255, 0.5); }
 
 .wallpaper {
   background-size: cover;

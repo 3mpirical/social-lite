@@ -54,6 +54,7 @@ class UserShow extends React.Component {
         .then((res) => {
             const friends = this.state.friends.filter((friend) => {
                 if(friend.id === this.props.user.id) return false;
+                return true
             })
             this.setState({ friends })
         })

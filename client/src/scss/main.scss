@@ -170,12 +170,44 @@ body {
 }
 
 
-.register {
+.register,
+.login {
+    text-align: center;
+}
+
+
+.main-form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    &__heading {
+        margin-bottom: 4rem;
+    }
+
+    &__btn {
+        font-size: 2rem;
+        padding: 1rem 2rem;
+    }
+
+    &__input {
+        margin-bottom: 4rem; 
+        background-color: rgba($color-white, 0.3);
+        border: 1px solid $color-white;
+        border-radius: 100px;
+        color: $color-white;
+        height: 4rem;
+        width: 60rem;
+        padding-left: 2rem;
+        font-size: 2rem;
+
+        &::placeholder {
+            color: rgba($color-white, 0.5);
+        }
+    }
 }
+
 
 
 .wallpaper {

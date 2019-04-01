@@ -38,9 +38,10 @@ class Login extends React.Component {
     render() {
         return (
             <div className="form-container">
-                <form className="register" onSubmit={this.handleSubmit}>
-                    <h1>Welcome Back</h1>
+                <form className="login main-form" onSubmit={this.handleSubmit}>
+                    <h1 className="main-form__heading" >Welcome Back</h1>
                     <input
+                        className="main-form__input"
                         required 
                         autoFocus
                         type="email"
@@ -50,6 +51,7 @@ class Login extends React.Component {
                         onChange={this.handleChange}
                     />  
                     <input
+                        className="main-form__input"
                         required 
                         type="password"
                         placeholder="Password"
@@ -58,6 +60,7 @@ class Login extends React.Component {
                         onChange={this.handleChange}
                     />  
                     <input
+                        className="main-form__input"
                         required 
                         type="password"
                         placeholder="Password Confirmation"
@@ -65,7 +68,7 @@ class Login extends React.Component {
                         value={this.state.passwordConfirmation}
                         onChange={this.handleChange}
                     /> 
-                    <button type="submit" className="btn-white" > Login </button> 
+                    <button type="submit" className="btn-white main-form__btn" > Login </button> 
                 </form>
             </div>
         )
