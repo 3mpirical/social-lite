@@ -63,6 +63,7 @@ body {
     background-color: rgba($color-white, 0.3);
     border-bottom: 1px solid $color-white;
     font-size: 1.6rem;
+    z-index: 10000;
     
     
     a {

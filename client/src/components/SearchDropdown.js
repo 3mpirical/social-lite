@@ -7,9 +7,9 @@ class SearchDropdown extends React.Component{
     renderResults = () => {
         return this.props.results.map((user) => {
             return (
-                <a href={`/user/${user.id}`} className="result" key={user.id} >
+                <Link to={`/user/${user.id}`} className="result" key={user.id} >
                     { user.name }
-                </a>
+                </Link>
             )
         })
     }

@@ -8,6 +8,17 @@ class UserShow extends React.Component {
     state = { user: null, friends: null, currentUser: false }
 
     componentDidMount() {
+        this.updateUserAndFriends();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log("component did update")
+        if(prevState.user !== null && prevProps.match.params.id !== this.props.match.params.id) {
+            this.updateUserAndFriends();
+        }
+    }
+
+    updateUserAndFriends = () => {
         if(parseInt(this.props.match.params.id) !== this.props.user.id) {
             axios.get(`/api/search/users/${this.props.match.params.id}`)
             .then((res) => {
@@ -15,7 +26,7 @@ class UserShow extends React.Component {
                 return axios.get(`/api/friends/${this.state.user.id}`)
             })
             .then((res) => {
-                this.setState({ friends: res.data }, console.log(this.state.friends));
+                this.setState({ friends: res.data, currentUser: false }, console.log(this.state.friends));
             })
             .catch((err) => console.log(err));
             
@@ -23,15 +34,11 @@ class UserShow extends React.Component {
             this.setState({ user: this.props.user, currentUser: true }, () => {
                 axios.get(`/api/friends/${this.state.user.id}`)
                 .then((res) => {
-                    this.setState({ friends: res.data },() => console.log(this.state.friends));
+                    this.setState({ friends: res.data });
                 })
                 .catch((err) => console.log(err));
             });
         }
-    }
-
-    componentDidUpdate() {
-        // console.log("here")
     }
 
     addFriend = () => {
@@ -45,10 +52,10 @@ class UserShow extends React.Component {
     renderFriendsCards = () => {
         return this.state.friends.map((friend) => {
             return(
-                <a href={`/user/${friend.id}`} key={friend.id} className="friends__card">
+                <Link to={`/user/${friend.id}`} key={friend.id} className="friends__card">
                     <img src={friend.image} alt="friend icon"/>
                     <p>{ friend.name }</p>
-                </a>
+                </Link>
             )
         })
     }
